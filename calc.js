@@ -14,7 +14,15 @@ app.post("/",function(req,res){
 
     res.send("result is " +result);
 });
-
+app.get("/bmicalculator", function(req,res){
+    res.sendFile(__dirname + "/bmiCalculator.html");
+});
+app.post("/bmicalculator", function(req,res){
+    var n1 = Number.parseFloat(req.body.height);
+    var n2 = Number.parseFloat(req.body.weight);
+    var bmi = n1/(n2 * n2);
+    res.send("bmi is " +bmi);
+});
 
 app.listen(3000,function(){
     console.log("server post is running on 3000");
